@@ -1,7 +1,8 @@
 ---
 - name: "create ansible-image and build web-container"
   hosts: localhost
-  task:
+  connection: local
+  tasks:
     - name: 'delete any container with same name'
       command: docker rm -f web-container
       ignore_errors: yes
