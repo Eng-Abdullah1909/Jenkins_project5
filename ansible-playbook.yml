@@ -1,5 +1,5 @@
 ---
-- name: 'create ansible-image and build web-container'
+- name: "create ansible-image and build web-container"
   hosts: localhost
   task:
     - name: 'delete any container with same name'
