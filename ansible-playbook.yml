@@ -1,0 +1,24 @@
+---
+name: 'create ansible-image and build web-container'
+hosts: localhost
+task:
+  - name: 'delete any container with same name'
+    command: docker rm -f web-container
+    ignore_errors: yes
+
+  - name: 'delete any image with same name'
+    command: docker rmi web-image
+    ignore_errors: yes
+
+  - name: 'build the ansible-image'
+    command: docker build -t web-image .
+
+  - name: 'run web-container'
+    command: docker run -d --name web-container -p 5000:80 ansible-image
+
+  - name: 'tag the image'
+    command: docker tag web-image:latest engabdullah1909/ansible-images:latest
+
+  - name: 'push the image to docker rejestiry'
+    command: docker push engabdullah1909/ansible-images:latest
+
