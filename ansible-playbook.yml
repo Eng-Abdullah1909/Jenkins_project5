@@ -15,7 +15,7 @@
       command: docker build -t web-image .
 
     - name: 'run web-container'
-      command: docker run -d --name web-container -p 5000:80 ansible-image
+      command: docker run -d --name web-container -p 5000:80 web-image
 
     - name: 'tag the image'
       command: docker tag web-image:latest engabdullah1909/ansible-images:latest
